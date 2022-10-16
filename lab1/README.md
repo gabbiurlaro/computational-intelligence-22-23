@@ -1,7 +1,7 @@
 ### Lab 1: set Covering
 
-The main file solution is set_covering.ipynb
+Gabriele Iurlaro - Salvatore Adalberto Esposito
 
-The main idea is to use A\* algorithm, using has heuristics the number of element that we don't have covered.
+The main file solution is set_covering.ipynb. The main idea is to use A\* algorithm, using as heuristic the number of element that we haven't covered yet. It's possible to implement also a limitation of the branching factor passing a max argument to possibile action.
 
-We have also limited the branching factor to achieve faster a solution.
+We have observed that A\* does not provide us a solution in a reasonable amount of time, s we moved to a greedy best-first solution, using the same heuristic of the previous case.
