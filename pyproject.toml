@@ -9,10 +9,10 @@ include = "(\\.py$|\\.ipynb$)"
 line-length = 120
 
 [tool.poetry]
-authors = ["Gabriele Iurlaro <s294917@polito.it>"]
-description = "computational intelligence"
+authors = ["Giovanni Squillero <squillero@polito.it>"]
+description = "Code and Notebook dependencies for Computational Intelligence (2022-23)"
 license = "proprietary"
-name = "2223"
+name = "ci22"
 version = "0.1.0"
 
 [tool.poetry.dependencies]
