@@ -1,6 +1,6 @@
 # Lab2: Set covering using Genetic Algorithm
 
-The main idea of this algorithm is the way we represent the individual. We start by transformign the list of list in a list of tuple, and removing the duplicated element, to avoid inserting twice an element:
+The main idea of this algorithm is the way we represent the individual. We start by transforming the list of list in a list of tuple, and removing the duplicated element, to avoid inserting one twice:
 
 ```python
 all_states = list(set([tuple(x) for x in problem(5, seed=42)]))
@@ -18,7 +18,7 @@ The genome is encapsuleted in a `Individual` class, together with his fitness. T
 ### Fitness function
 
 Our goal is to cover all the numbers with lists of minimum size. So I've decided to implement the fitenss as a tuple: $$f = (covered, -\sum_{s \in S} len(s))$$
-Where covered is the number of item covered by the solution. I've tried different combination of this parameter, also a weighted sum of this contributes plus a bonus if they reach the solutin, but this ones converges to a solution pretty fast.
+Where covered is the number of item covered by the solution. I've tried different combination of this parameter, also a weighted sum of this contributes plus a bonus if they reach the solution, but this ones converges to a solution pretty fast.
 
 ### Genetic algorithm
 
