@@ -13,6 +13,15 @@ The distinction is base on the completation, computed as the number of stick rem
 
 The other strategies is based on a simple assumption: if it's my turn i can easily remove one row(if k is `None`), and this is useful only if there are odd rows active. We called it aggressive, and it's a variant of `gabriele`.
 
+The `aggressive` strategies seems to be very effective against the other one, results are reported in this table:
+
+|                 | gabriele | pure random | aggressive | Optimal |
+| --------------- | -------- | ----------- | ---------- | ------- |
+| **gabriele**    | 1.0 %    | 0.81 %      | 0.0 %      | 0.0 %   |
+| **pure random** | 0.17 %   | 0.54 %      | 0.18 %     | 0.0 %   |
+| **aggressive**  | 1.0 %    | 0.76 %      | 0.48 %     | 0.0 %   |
+| **Optimal**     | 1.0 %    | 1.0 %       | 1.0 %      | 1.0 %   |
+
 ### Task 3.2
 
 We evolved two strategies:
