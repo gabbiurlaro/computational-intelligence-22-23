@@ -11,6 +11,8 @@ The main idea of the hardcoded strategy is that we cannot do always the same thi
 
 The distinction is base on the completation, computed as the number of stick remaining on the boar divided by the total number of sticks.
 
+The other strategies is based on a simple assumption: if it's my turn i can easily remove one row(if k is `None`), and this is useful only if there are odd rows active. We called it aggressive, and it's a variant of `gabriele`.
+
 ### Task 3.2
 
 We evolved two strategies:
