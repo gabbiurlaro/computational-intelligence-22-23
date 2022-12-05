@@ -26,7 +26,10 @@ The `aggressive` strategies seems to be very effective against the other one, re
 
 We evolved two strategies:
 
-- `evolvable_strategies` is the one mentioned before, the parameter to evolve are:
+- `evolvable_strategy` is the one mentioned before, the parameter to evolve are:
   - `max_k`: a maximum amout of sticks
   - `turn_strategies`: when we turn strategies
-- `evolvable_random_strategies`: since the one before plays always the same, we introduced a bit of randomness in the play, resulting in slightly better result.
+- `evolvable_random_strategy`: since the one before plays always the same, we introduced a bit of randomness in the play, resulting in slightly better result.
+
+There was the idea to embed some kind of aggressive strategy in the evolved one, but we had the idea too late and it was difficult. In the next days we will provide an implementation.
+Our idea is to have a lot of players for a future use.
