@@ -22,7 +22,7 @@ if __name__ == '__main__':
     maze.print_maze()
 
     # For a certain number of games:
-    for i in range(2):
+    for i in range(500):
         # This is the game loop
         logging.info(f"The game is starting")
         while not maze.is_game_over():
