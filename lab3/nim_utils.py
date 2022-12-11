@@ -4,6 +4,7 @@ from itertools import accumulate
 from operator import xor
 import numpy as np
 from copy import deepcopy, copy
+from typing import Callable
 
 Nimply = namedtuple("Nimply", "row, num_objects")
 
@@ -26,14 +27,14 @@ class Nim:
     def __eq__(self, __o: object) -> bool:
         # return self._sticks == __o._sticks
         c = Counter(self._rows)
-        del c[0]       
+        # del c[0]       
         c1 = Counter(__o._rows)
-        del c1[0]
+        # del c1[0]
         return c == c1
         
     def __hash__(self) -> int:
         c = Counter(self._rows)
-        del c[0]
+        # del c[0]
         return hash(c.__str__())
         
     @property
@@ -107,3 +108,20 @@ def pure_random(state: Nim) -> Nimply:
     row = random.choice([r for r, c in enumerate(state.rows) if c > 0])
     num_objects = random.randint(1, state.rows[row])
     return Nimply(row, num_objects)
+
+## Evaluating function
+def evaluate_against(strategy: Callable, against: Callable, NIM_SIZE = 5, NUM_MATCHES = 100) -> float:
+    opponent = (strategy, against)
+    won = 0
+    for _ in range(NUM_MATCHES):
+        nim = Nim(NIM_SIZE)
+        player = 0
+        while nim:
+            # logging.debug(nim)
+            ply = opponent[player](nim)
+            nim.nimming(ply)
+            player = 1 - player
+        if player == 1: # winner is the zero
+            won += 1
+        # logging.debug(f"player {1 - player} has won.")
+    return won / NUM_MATCHES
