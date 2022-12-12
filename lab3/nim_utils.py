@@ -56,11 +56,17 @@ class Nim:
         self._rows[row] -= num_objects
 
     # -1 if I don't win, 0 if I make the last winnning move
-    def give_reward(self) -> int:
-        return -1 * int(self.__bool__())
+    def give_reward(self, winner) -> int:
+        if self.__bool__():
+            return -1
+        else:
+            if winner:
+                return 2
+            else:
+                return -2
 
-    def get_state_and_reward(self):
-        return self, self.give_reward()
+    def get_state_and_reward(self, winner):
+        return self, self.give_reward(winner)
 
     def possible_moves(self): 
         return [(r, o) for r, c in enumerate(self.rows) for o in range(1, c + 1)]
