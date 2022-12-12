@@ -58,7 +58,7 @@ class Nim:
     # -1 if I don't win, 0 if I make the last winnning move
     def give_reward(self, winner) -> int:
         if self.__bool__():
-            return -1
+            return -.5
         else:
             if winner:
                 return 2
@@ -66,7 +66,7 @@ class Nim:
                 return -2
 
     def get_state_and_reward(self, winner):
-        return self, self.give_reward(winner)
+        return deepcopy(self), self.give_reward(winner)
 
     def possible_moves(self): 
         return [(r, o) for r, c in enumerate(self.rows) for o in range(1, c + 1)]
@@ -114,6 +114,11 @@ def pure_random(state: Nim) -> Nimply:
     row = random.choice([r for r, c in enumerate(state.rows) if c > 0])
     num_objects = random.randint(1, state.rows[row])
     return Nimply(row, num_objects)
+
+def gabriele(state: Nim) -> Nimply:
+    """Pick always the maximum possible number of the lowest row"""
+    possible_moves = [(r, o) for r, c in enumerate(state.rows) for o in range(1, c + 1)]
+    return Nimply(*max(possible_moves, key=lambda m: (-m[0], m[1])))
 
 ## Evaluating function
 def evaluate_against(strategy: Callable, against: Callable, NIM_SIZE = 5, NUM_MATCHES = 100) -> float:
