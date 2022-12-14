@@ -48,5 +48,8 @@ During this journey in trying to implement a Reinforcement learning agent to pla
 Since with the first approach we wasn't able to achieve good result, we moved on the second one.
 
 ### Reinforcement learning details
+
 First when initializing the player, we generate all possible $(s, a)$ pair(with $ s \in S, a \in A$), with a very simple recursive algorithm. The recursion is also our main bottleneck, and we are not able to play Nim bigger then 8(For exmaple, for `NIM_SIZE = 7`, we generate `4404719` pairs in 3 minutes).
+
+We concentrate our analysis in learn to win against the `optimal_strategy`. We have found that the agent, if learns only to win against it, can learn also to win against the other strategy we have used before.
 
