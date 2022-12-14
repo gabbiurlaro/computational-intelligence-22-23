@@ -40,24 +40,13 @@ We implemented a simple recursive algorithm for min-max, that was able to win ag
 
 ## Task 3.4 - reinforcement learning
 
-We were not able to achieve good result using reinforement learning algorithm. We try to use different approaches:
+During this journey in trying to implement a Reinforcement learning agent to play Nim, we have explored several ideas:
 
-- Learn directly a value for the state and choose the action that lead to this state.
-- Learn the Q table
+- Learn directly a value for the state and choose the action that lead to this state(:-1:)
+- Learn the Q table (:boom:)
 
-The main difficulties we have encoutered are:
-
-- The incredible amount of memory required to memorize the table. We have tried to extract feature from the state and then apply some learnable function(i.e. a MLP) but we have not achieved results.
-- The difficulties in tuning hyperparameter($\alpha$)
+Since with the first approach we wasn't able to achieve good result, we moved on the second one.
 
 ### Reinforcement learning details
+First when initializing the player, we generate all possible $(s, a)$ pair(with $ s \in S, a \in A$), with a very simple recursive algorithm. The recursion is also our main bottleneck, and we are not able to play Nim bigger then 8(For exmaple, for `NIM_SIZE = 7`, we generate `4404719` pairs in 3 minutes).
 
-The algorithm is very simple and similar to the one presented by prof. Andrea Calabrese during the lecture. After each move, we give a reward of -1 if the player doesn't win and 0 if the agent wins. 
-
-We generate all the possible states before using a simple recursive function. 
-
-We have modified the Nim class, in particular the `__eq__` and `__hash__` methods, in order to recognize equivalent Nim states(`[1, 2, 2] = [2, 1, 2]`). 
-
-We have also tried to use the idea that a Nim with size = 3 is a sub-problem of a bigger NIM, so we trained our agent on a bigger `NIM_SIZE`.
-
-Here are some results:
