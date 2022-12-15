@@ -53,3 +53,15 @@ First when initializing the player, we generate all possible $(s, a)$ pair(with 
 
 We concentrate our analysis in learn to win against the `optimal_strategy`. We have found that the agent, if learns only to win against it, can learn also to win against the other strategy we have used before.
 
+For example, after `5000` plays:
+
+| opponent | winning rate |
+|--|--|
+|pure_random |0.65 |
+|aggressive |0.66|
+|optimal_strategy | 0.34 |
+
+#### Possible improvements
+By talking with other people, we found out that some imporvements could be useful:
+- learn to solve a bigger Nim for solving also lower `NIM_SIZE` Nim
+- We generate all the state action pair before the learning start. It could be useful to save a state only if it's discovered
